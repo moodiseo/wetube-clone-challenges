@@ -1,0 +1,27 @@
+{
+  "name": "wetube-clone-challenges",
+  "version": "1.0.0",
+  "description": "Wetube Clone challenges",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moodiseo/wetube-clone-challenges.git"
+  },
+  "scripts": {
+    "dev": "nodemon --exec babel-node index.js"
+  },
+  "author": "https://github.com/moodiseo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moodiseo/wetube-clone-challenges/issues"
+  },
+  "homepage": "https://github.com/moodiseo/wetube-clone-challenges#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.3",
+    "@babel/node": "^7.22.19",
+    "@babel/preset-env": "^7.23.3"
+  }
+}
