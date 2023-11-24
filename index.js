@@ -1,36 +1,17 @@
 import express from "express";
-const app = express();
+import morgan from "morgan";
+import globalRouter from "./src/routers/globalRouter";
+import storyRouter from "./src/routers/storyRouter";
+import userRouter from "./src/routers/userRouter";
 
-const urlLogger = (req, res, next) => {
-  console.log("Path: ", req.path);
-  next();
-};
-const timeLogger = (req, res, next) => {
-  const date = new Date();
-  console.log(
-    `Time: ${date.getFullYear()}.${date.getMonth()}.${date.getDate()}`
-  );
-  next();
-};
-const securityLogger = (req, res, next) => {
-  if (req.protocol === "https") {
-    console.log("Secure");
-  } else {
-    console.log("Insecure");
-  }
-  next();
-};
-const protectorLogger = (req, res, next) => {
-  if (req.path === "/protected") {
-    return res.send("<h1>Forbidden<h1>");
-  }
-  next();
-};
-const handleHome = (req, res) => {
-  return res.send("Home");
-};
-app.use(urlLogger, timeLogger, securityLogger, protectorLogger);
-app.get("/", handleHome);
+const app = express();
+const logger = morgan("dev");
+
+app.use(logger);
+
+app.use("/", globalRouter);
+app.use("/users", userRouter);
+app.use("/stories", storyRouter);
 
 const handleListening = () => console.log("Server Listening");
 app.listen(3000, handleListening);
