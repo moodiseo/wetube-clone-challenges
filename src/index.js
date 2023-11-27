@@ -1,12 +1,14 @@
 import express from "express";
 import morgan from "morgan";
-import globalRouter from "./src/routers/globalRouter";
-import storyRouter from "./src/routers/storyRouter";
-import userRouter from "./src/routers/userRouter";
+import globalRouter from "./routers/globalRouter";
+import storyRouter from "./routers/storyRouter";
+import userRouter from "./routers/userRouter";
 
 const app = express();
 const logger = morgan("dev");
 
+app.set("view engine", "pug");
+app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 
 app.use("/", globalRouter);
